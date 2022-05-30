@@ -66,13 +66,15 @@
       </div>
 
       <!-- TODO: Search Bar -->
-      <!-- <div class="d-flex justify-content-center login-parent" data-aos="fade-up" data-aos-delay="100">
-        <form action="" method="POST">
-          <input type="text" name="full_name" placeholder="Search" class="login-inputs searchBar" style="border-radius:0; margin:0;">
-          <a href="<?php // echo SITEURL; ?>food-search.php"><i class="fas fa-search searchIcon"></i></a>
+      <div class="d-flex justify-content-center login-parent" data-aos="fade-up" data-aos-delay="100">
+        <form action="food-search.php" method="POST">
+          <input type="text" name="full_name" placeholder="Search by price or name" class="login-inputs searchBar" style="border-radius:0; margin:0;">
+          <!-- <a href="<?php // echo SITEURL; ?>food-search.php"><i class="fas fa-search searchIcon"></i></a> -->
+          <button type="submit" style = "background-color: inherit; color: white; border:none;" name = "search-menu"><i class="fas fa-search searchIcon"></i></button>
         </form>
-      </div> -->
+      </div> 
 
+      <script src="./js/freebie.js"></script>
 
       <!-- Display Food Items -->
       <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
@@ -87,7 +89,7 @@
 
         <!-- Starters -->
         <?php
-              $sql = "SELECT * FROM tbl_food WHERE category_name = 'Starters'";
+              $sql = " SELECT * FROM tbl_food WHERE category_name = 'Starters'";
               $res = mysqli_query($conn, $sql);
 
               if ($res == TRUE) {
@@ -109,8 +111,7 @@
           <div class="menu-content">
             <?php echo "<span class='food-item'>$title</span>"; ?><span>&#8377;<?php echo $price; ?></span>
             <span>
-              <a href='<?php echo SITEURL; ?>view-cart.php?food_title=<?php echo $title; ?>'
-                class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a>
+              <a onclick="add_order('<?php echo $title; ?>');" id='<?php echo(str_replace(" ","",$title."-cart")); ?>' class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a>
             </span>
           </div>
           <div class="menu-ingredients">
@@ -148,8 +149,7 @@
           <img src="assets/img/menu/<?php echo $image_name ?>" class="menu-img" alt="">
           <div class="menu-content">
             <?php echo "<span class='food-item'>$title</span>"; ?><span>&#8377;<?php echo $price; ?></span>
-            <span><a href='<?php echo SITEURL; ?>view-cart.php?food_title=<?php echo $title; ?>'
-                class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
+            <span><a onclick="add_order('<?php echo $title; ?>');" id='<?php echo(str_replace(" ","",$title."-cart")); ?>' class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
           </div>
           <div class="menu-ingredients">
             <?php echo $description; ?>
@@ -186,8 +186,7 @@
           <img src="assets/img/menu/<?php echo $image_name ?>" class="menu-img" alt="">
           <div class="menu-content">
             <?php echo "<span class='food-item'>$title</span>"; ?><span>&#8377;<?php echo $price; ?></span>
-            <span><a href='<?php echo SITEURL; ?>view-cart.php?food_title=<?php echo $title; ?>'
-                class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
+            <span><a onclick="add_order('<?php echo $title; ?>');" id='<?php echo(str_replace(" ","",$title."-cart")); ?>' class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
           </div>
           <div class="menu-ingredients">
             <?php echo $description; ?>
@@ -224,8 +223,7 @@
           <img src="assets/img/menu/<?php echo $image_name ?>" class="menu-img" alt="">
           <div class="menu-content">
             <?php echo "<span class='food-item'>$title</span>"; ?><span>&#8377;<?php echo $price; ?></span>
-            <span><a href='<?php echo SITEURL; ?>view-cart.php?food_title=<?php echo $title; ?>'
-                class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
+            <span><a onclick="add_order('<?php echo $title; ?>');" id='<?php echo(str_replace(" ","",$title."-cart")); ?>' class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
           </div>
           <div class="menu-ingredients">
             <?php echo $description; ?>
@@ -262,8 +260,7 @@
           <img src="assets/img/menu/<?php echo $image_name ?>" class="menu-img" alt="">
           <div class="menu-content">
             <?php echo "<span class='food-item'>$title</span>"; ?><span>&#8377;<?php echo $price; ?></span>
-            <span><a href='<?php echo SITEURL; ?>view-cart.php?food_title=<?php echo $title; ?>'
-                class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
+            <span><a onclick="add_order('<?php echo $title; ?>');" id='<?php echo(str_replace(" ","",$title."-cart")); ?>' class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
           </div>
           <div class="menu-ingredients">
             <?php echo $description; ?>
@@ -300,8 +297,7 @@
           <img src="assets/img/menu/<?php echo $image_name ?>" class="menu-img" alt="">
           <div class="menu-content">
             <?php echo "<span class='food-item'>$title</span>"; ?><span>&#8377;<?php echo $price; ?></span>
-            <span><a href='<?php echo SITEURL; ?>view-cart.php?food_title=<?php echo $title; ?>'
-                class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
+            <span><a onclick="add_order('<?php echo $title; ?>');" id='<?php echo(str_replace(" ","",$title."-cart")); ?>' class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
           </div>
           <div class="menu-ingredients">
             <?php echo $description; ?>
@@ -338,8 +334,7 @@
           <img src="assets/img/menu/<?php echo $image_name ?>" class="menu-img" alt="">
           <div class="menu-content">
             <?php echo "<span class='food-item'>$title</span>"; ?><span>&#8377;<?php echo $price; ?></span>
-            <span><a href='<?php echo SITEURL; ?>view-cart.php?food_title=<?php echo $title; ?>'
-                class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
+            <span><a onclick="add_order('<?php echo $title; ?>');" id='<?php echo(str_replace(" ","",$title."-cart")); ?>' class='book-a-table-btn scrollto d-lg-flex food-item'>Add to Cart</a></span>
           </div>
           <div class="menu-ingredients">
             <?php echo $description; ?>
@@ -355,6 +350,10 @@
 
       </div>
 
+      <form id="f-order-form" method="POST" action="add-cart.php" style="display: none;">
+        <input id="f-order-form-items" type="hidden" name="f-order-items" value="">
+      </form>
+      <button id="proceedCart" onclick="submit_orders();">Proceed to Cart (<b id="order_num">0</b>)</button>
 
   </section>
   <!-- End Menu Section -->
@@ -409,7 +408,7 @@
 
         <div class="col-lg-8 mt-5 mt-lg-0">
 
-          <form action="" method="POST" role="form" class="php-email-form">
+          <form action="forms\contact.php" method="POST" role="form" class="php-email-form">
             <div class="row">
               <div class="col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -425,6 +424,7 @@
               <textarea class="form-control" name="message" rows="8" placeholder="Message" required></textarea>
             </div>
             <br>
+            <div class="my-3"> <div class="loading">Loading</div> <div class="error-message"></div> <div class="sent-message">Your message has been sent. Thank you!</div> </div>
             <div class="text-center"><button type="submit" name="submit">Send Message</button></div>
           </form>
 

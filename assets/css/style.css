@@ -966,6 +966,7 @@ section {
   padding: 0 10px;
   font-weight: 600;
   color: #cda45e;
+  cursor: pointer;
 }
 
 .menu .menu-content span.food-item{
@@ -1825,13 +1826,40 @@ section {
   border: 2px solid white;
 }
 
-/* Update User */
-.update-user-table {
-  width: 80%;
-  margin-left: 10%;
-  margin-bottom: 10%;
+
+/* View cart additional edits */
+.cform_num{
+  padding-left: 5px;
+  background-color: transparent;
+  border-color: #cda45e;
+  border-width: 1px;
+  color: white;
+  border-radius: 5px;
+  width: 100px;
+}
+.cform_set{
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: #cda45e;
+  color: #222;
+
+}
+#proceedCart{
+  float: right;
+  margin-top: 30px;
+  border-radius: 30px;
+  border-color: #cda45e;
+  background-color: inherit;
+  padding:0.5% 1%;
+  color: #fff;
+  font-size: 16px;
+}
+#proceedCart:hover{
+  background-color: #cda45e;
 }
 
-.update-user-table td {
-  padding-top: 5%;
+#f-empty-cart-submit{
+  background-color: inherit;
+  color: #cda45e;
+  border: none;
 }
